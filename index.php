@@ -1,8 +1,13 @@
 <?php
 define('CACHE_TOGGLE', true);
 define('BASE_PATH', rtrim(preg_replace('#[/\\\\]{1,}#', '/', __DIR__), '/') . '/');
+$cache_dir_path = BASE_PATH . 'cache';
 $req_path_hash = md5($_SERVER['REQUEST_URI']);
-$cached_file_path = BASE_PATH . 'cache/' . $req_path_hash . '.html';
+$cached_file_path = $cache_dir_path . '/'. $req_path_hash . '.html';
+
+if (!is_dir($cache_dir_path)) {
+    mkdir($cache_dir_path, 0777, true);
+}
 
 if (file_exists($cached_file_path) && CACHE_TOGGLE) {
     // Make sure output buffering is not active so readfile's chunks
