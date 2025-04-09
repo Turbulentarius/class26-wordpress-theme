@@ -1,0 +1,27 @@
+/*
+Theme Name: class26
+Theme URI: https://example.com/
+Author: Turbulentarius
+Author URI: https://example.com/
+Description: A Turbulent theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: custom, simple, responsive
+Text Domain: turbulentarius
+*/
+nav ol {list-style-type:none;display:flex;gap:0.5rem;}
+#shop_listing {display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;}
+
+@media (max-width: 1024px) {
+  #shop_listing {grid-template-columns:repeat(3, 1fr);}
+}
+
+@media (max-width: 768px) {
+  #shop_listing {grid-template-columns:repeat(2, 1fr);}
+}
+
+@media (max-width: 480px) {
+  #shop_listing {grid-template-columns:1fr;}
+}
+
