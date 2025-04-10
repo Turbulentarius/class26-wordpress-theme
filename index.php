@@ -2,8 +2,9 @@
 define('CACHE_TOGGLE', true);
 define('BASE_PATH', rtrim(preg_replace('#[/\\\\]{1,}#', '/', __DIR__), '/') . '/');
 $cache_dir_path = BASE_PATH . 'cache';
-$req_path_hash = md5($_SERVER['REQUEST_URI']);
-$cached_file_path = $cache_dir_path . '/'. $req_path_hash . '.html';
+$clean_path = substr($_SERVER['REQUEST_URI'], 1);
+if ($clean_path == '') {$clean_path = 'home';}
+$cached_file_path = $cache_dir_path . '/'. $clean_path . '.html';
 
 if (!is_dir($cache_dir_path)) {
     mkdir($cache_dir_path, 0777, true);
